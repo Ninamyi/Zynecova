@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynecova - Administrador</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Logo Zynecova" class="logo">
+        <h1>Panel de Administrador</h1>
+    </header>
+
+    <nav>
+        <button onclick="mostrarSeccion('usuarios')" style="margin-right: 10px;">Usuarios</button>
+        <button onclick="mostrarSeccion('empleados')" style="margin-right: 10px;">Empleados</button>
+        <button onclick="mostrarSeccion('soporte')">Soporte</button>
+    </nav>
+
+    <main style="padding: 20px;">
+
+        <button id="btnAgregar" style="margin-bottom: 15px;">Agregar Registro</button>
+
+        <section id="usuarios" class="seccion-activa">
+            <h2>Datos de Usuarios</h2>
+            <table border="1" width="100%" id="tablaUsuarios">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+
+        <section id="empleados" style="display:none;">
+            <h2>Datos de Empleados</h2>
+            <table border="1" width="100%" id="tablaEmpleados">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cargo</th>
+                        <th>Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+
+        <section id="soporte" style="display:none;">
+            <h2>Reportes de Soporte</h2>
+            <table border="1" width="100%" id="tablaSoporte">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de Reporte</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Zynecova. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/admin.js"></script>
+</body>
+</html>

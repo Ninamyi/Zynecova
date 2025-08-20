@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zynecova | Panel Empleado</title>
+  <link rel="stylesheet" href="css/empleado.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Zynecova" class="logo" />
+    <h1>Pronóstico y Monitoreo Ambiental</h1>
+  </header>
+
+  <main>
+    <div class="barra-usuario">
+      <p>Bienvenido al panel de empleado, <span id="nombre-usuario"></span></p>
+      <button id="cerrar-sesion" class="btn btn-salir">Cerrar sesión</button>
+    </div>
+
+    <section class="form-section">
+      <h2>📝 Ingresar Pronóstico Ambiental</h2>
+      <form id="registro-form">
+        <div class="form-group">
+          <label for="ciudad">Ciudad:</label>
+          <input type="text" id="ciudad" required />
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha:</label>
+          <input type="date" id="fecha" required />
+        </div>
+
+        <div class="form-group">
+          <label for="temperatura">Temperatura (°C):</label>
+          <input type="number" id="temperatura" step="0.1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="precipitacion">Precipitación (mm):</label>
+          <input type="number" id="precipitacion" step="0.1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="nivelAgua">Nivel del agua (%):</label>
+          <input type="number" id="nivelAgua" min="0" max="100" required />
+        </div>
+
+        <div class="form-group">
+          <label for="calidadAgua">Calidad del agua:</label>
+          <select id="calidadAgua" required>
+            <option value="">Seleccione</option>
+            <option value="Buena">Buena</option>
+            <option value="Regular">Regular</option>
+            <option value="Mala">Mala</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="calidadAire">Calidad del aire:</label>
+          <select id="calidadAire" required>
+            <option value="">Seleccione</option>
+            <option value="Buena">Buena</option>
+            <option value="Regular">Regular</option>
+            <option value="Mala">Mala</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="incidente">Incidente climático (opcional):</label>
+          <input type="text" id="incidente" placeholder="Ej: inundación, sequía..." />
+        </div>
+
+        <button type="submit" class="btn">Registrar</button>
+      </form>
+    </section>
+
+    <section class="tabla-section">
+      <h2>📊 Pronósticos Registrados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Ciudad</th>
+            <th>Fecha</th>
+            <th>Temp</th>
+            <th>Lluvia</th>
+            <th>Nivel agua</th>
+            <th>Calidad agua</th>
+            <th>Calidad aire</th>
+            <th>Estado climático</th>
+            <th>Zona / Incidente</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body">
+
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Zynecova | Proyecto académico - Panel empleado</p>
+  </footer>
+
+  <script src="js/empleado.js"></script>
+</body>
+</html>

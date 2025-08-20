@@ -1,0 +1,19 @@
+usuario: 'Juan'
+email: 'admin@gmail.com'
+clave: '1234'
+rol: 'admin'
+-------------------
+usuario: 'Susana Gámez'
+email: 'empleado@gmail.com'
+clave: 'Zyneco01'
+rol: 'empleado'
+--------------------
+usuario: 'Lianis'
+email: 'soporte@gmail.com'
+clave: 'ZyneSoporte'
+rol: 'soporte'
+---------------------
+usuario: 'Yefrys'
+email: 'usuario@gmail.com'
+clave: '00112233'
+rol: 'cliente'
