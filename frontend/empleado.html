@@ -6,6 +6,8 @@
   <title>Zynecova | Panel Empleado</title>
   <link rel="stylesheet" href="css/empleado.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
   <header>
@@ -20,7 +22,7 @@
     </div>
 
     <section class="form-section">
-      <h2>📝 Ingresar Pronóstico Ambiental</h2>
+      <h2>Ingresar Pronóstico Ambiental</h2>
       <form id="registro-form">
         <div class="form-group">
           <label for="ciudad">Ciudad:</label>
@@ -92,10 +94,13 @@
             <th>Zona / Incidente</th>
           </tr>
         </thead>
-        <tbody id="tabla-body">
-
-        </tbody>
+        <tbody id="tabla-body"></tbody>
       </table>
+    </section>
+
+    <section class="mapa-section">
+      <h2>Mapa Climático en Tiempo Real</h2>
+      <div id="map" style="height: 400px; border-radius: 10px; margin-top: 15px;"></div>
     </section>
   </main>
 
@@ -103,6 +108,8 @@
     <p>© 2025 Zynecova | Proyecto académico - Panel empleado</p>
   </footer>
 
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="js/empleado.js"></script>
+  <script src="js/mapaEmpleado.js"></script>
 </body>
 </html>
