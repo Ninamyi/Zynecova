@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynecova - Noticias</title>
+    <link rel="stylesheet" href="css/noticias.css">
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Zynecova" style= "width:80px;">
+        <h1>Noticias</h1>
+    </header>
+    <main>
+        <div id="listaNoticias" class="noticias-container"></div>
+    </main>
+
+    <script>
+        async function cargarNoticias() {
+        try{
+            const  res = await fetch("https://localhost:3000/api/noticias");
+            const noticias = await res.json();
+
+            const listaNoticias = document.getElementById('listaNoticias');
+            lista.innerHTML = "";
+            
+            noticias.forEach(n => {
+                lista.innerHTML += `
+                <article class="noticia">
+                    <h2>${n.titulo}</h2>
+                    ${n.imagen ? `<img src="${n.imagen}" alt="imagen noticia">` : ""}
+                    <p>${n.contenido}</p>
+                    <small>Publicado el: ${new Date(n.fecha).toLocaleDateString()}</small>
+                </article>
+                `;
+            });
+        } catch (error) {
+            console.error(error);
+            alert("Error al cargar las noticias");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", cargarNoticias);
+    </script>
+</body>
+</html>
