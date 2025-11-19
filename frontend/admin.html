@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zynecova - Administrador</title>
+  <link rel="stylesheet" href="css/admin.css"><link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+e2+4E+H1qF7mEjMtfv6yYkz4E4L0Z8J5ZkV8z8Hc="
+    crossorigin=""
+  />
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Zynecova" class="logo">
+    <h1>Panel de Administrador</h1>
+  </header>
+
+  <nav>
+    <button onclick="mostrarSeccion('usuarios')">Usuarios</button>
+    <button onclick="mostrarSeccion('empleados')">Empleados</button>
+    <button onclick="mostrarSeccion('soporte')">Soporte</button>
+    <button onclick="mostrarSeccion('mapa')">Mapa en Tiempo Real</button>
+  </nav>
+
+  <main style="padding: 20px;">
+
+    <button id="btnAgregar" style="margin-bottom: 15px;">Agregar Registro</button>
+
+    <section id="usuarios" class="seccion-activa">
+      <h2>Datos de Usuarios</h2>
+      <table border="1" width="100%" id="tablaUsuarios">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Registro</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="empleados" style="display:none;">
+      <h2>Datos de Empleados</h2>
+      <table border="1" width="100%" id="tablaEmpleados">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Cargo</th>
+            <th>Registro</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="soporte" style="display:none;">
+      <h2>Reportes de Soporte</h2>
+      <table border="1" width="100%" id="tablaSoporte">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo de Reporte</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="mapa" style="display:none;">
+      <h2>🌍Mapa de Pronósticos y Reportes Ambientales</h2>
+      <div id="map" style="height: 500px; border-radius: 10px; margin-top: 10px;"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Zynecova. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1j1gLnNrsZBzFbp6E4kO1JzEjk9wFZbnP+/5p5r0="
+    crossorigin="">
+  </script>
+  <script src="js/admin.js"></script>
+  <script src="js/mapa-admin.js"></script>
+</body>
+</html>

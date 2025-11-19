@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zynecova - Soporte</title>
+    <link rel="stylesheet" href="css/soporte.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Zynecova">
+            <h1>Panel de Soporte</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>📢 Reportar problema</h2>
+            <form id="reporteProblemaForm">
+                <label for="tipo_problema">Tipo de problema:</label>
+                <select id="tipo_problema" name="tipo_problema" required>
+                    <option value="">Seleccione...</option>
+                    <option value="actualizacion">Actualización</option>
+                    <option value="modificacion">Modificación</option>
+                    <option value="tecnico">Problema Técnico</option>
+                </select>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" name="descripcion" placeholder="Describa el problema con detalle..." required></textarea>
+
+                <button type="submit">📨 Enviar reporte</button>
+            </form>
+        </section>
+
+        <section class="reportes-section">
+            <h2>📄 Reportes Recibidos</h2>
+            <table id="tablaReportes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="js/soporte.js"></script>
+</body>
+</html>
