@@ -1,0 +1,117 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f2f6ff;
+    margin: 0;
+    padding: 0;
+}
+
+.chatbot-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #9c8df0;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    z-index: 10000; 
+}
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+}
+.chatbot-toggle img {
+    width: 40px;
+    height: 40px;
+}
+
+.chatbot {
+    position: fixed;
+    bottom: 110px;
+    right: 25px;
+    width: 320px;
+    height: 450px; 
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; 
+
+    display: flex; 
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.chatbot.open {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.chatbot-header {
+    background: #9c8df0;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.chatbot-body {
+    padding: 10px;
+    flex-grow: 1; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #f9f9f9;
+}
+
+.bot-message, .user-message {
+    padding: 10px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.bot-message {
+    background: #e6e6e6;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.user-message {
+    background: #9c8df0; 
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.chatbot-footer {
+    display: flex;
+    border-top: 1px solid #eee;
+}
+.chatbot-footer input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+}
+.chatbot-footer button {
+    background: #9c8df0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-top-right-radius: 0; 
+}
+.chatbot-footer button:hover {
+    background: #7d72d4;
+}
