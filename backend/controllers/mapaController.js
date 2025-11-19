@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { getConnection } = require("../db/connectionMongoDB");
+const { getConnection } = require("../connectionMongoDB");
 const API_KEY = process.env.OPENWEATHER_API_KEY;
 
 exports.getDatosCiudad = async (req, res) => {

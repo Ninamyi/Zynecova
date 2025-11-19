@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 /**
- * Middleware para verificar que el usuario tenga el rol adecuado
+ * Middleware para verificar que el  tenga el rol adecuado
  * @param {...string} rolesPermitidos
  */
 function verificarRol(...rolesPermitidos) {

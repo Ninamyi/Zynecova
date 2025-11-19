@@ -1,8 +1,6 @@
 const { ObjectId } = require("mongodb");
-const { connectMongoDB } = require("../config/connectionMongoDB");
-
+const { connectMongoDB } = require("../connectionMongoDB");
 let db;
-
 (async () => {
   try {
     db = await connectMongoDB();
@@ -60,27 +58,63 @@ exports.getAlertasCriticas = async (req, res) => {
 };
 
 exports.getDatosExternos = async (req, res) => {
-    const query = "últimas noticias de contaminación y cambio climático en Latinoamérica"; 
-    
-    try {
-        const response = await google.search({ queries: [query] });
+};
 
-        let datosExternos = [];
-        if (response.result) {
-            const results = JSON.parse(response.result).results;
-            
-            datosExternos = results.slice(0, 5).map(item => ({ 
-                title: item.source_title || item.snippet.substring(0, 50) + '...',
-                summary: item.snippet,
-                published_at: item.publication_time ? new Date(item.publication_time).toISOString() : new Date().toISOString(),
-                content: item.snippet, 
-                image_url: null 
-            }));
+exports.getNoticiasAdmin = async (req, res) => { 
+    if (!db) return res.status(503).json({ message: "Servicio de base de datos no disponible." });
+
+    try {
+        const noticias = await db.collection("noticias").find().sort({ fecha: -1 }).toArray();
+        res.json(noticias);
+    } catch (error) {
+        console.error('Error al obtener noticias para Admin:', error);
+        res.status(500).json({ message: "Error interno al obtener el listado de noticias." });
+    }
+};
+
+exports.crearNoticia = async (req, res) => {
+    if (!db) return res.status(503).json({ message: "Servicio de base de datos no disponible." });
+
+    try {
+        const nuevaNoticia = req.body; 
+        
+        if (!nuevaNoticia.fecha) nuevaNoticia.fecha = new Date();
+        if (!nuevaNoticia.estado) nuevaNoticia.estado = "pendiente";
+
+        const resultado = await db.collection("noticias").insertOne(nuevaNoticia);
+        
+        if (resultado.acknowledged) {
+            return res.status(201).json({ message: "Noticia creada con éxito.", id: resultado.insertedId });
+        } else {
+            throw new Error("Fallo al insertar en la base de datos.");
         }
 
-        res.json(datosExternos);
     } catch (error) {
-        console.error('Error en la búsqueda dinámica de Google:', error);
-        res.json([]);
+        console.error('Error al crear noticia:', error);
+        res.status(500).json({ message: "Error interno al crear la noticia." });
+    }
+};
+
+exports.actualizarNoticia = async (req, res) => {
+    if (!db) return res.status(503).json({ message: "Servicio de base de datos no disponible." });
+
+    try {
+        const { id } = req.params;
+        const datosActualizados = req.body;
+
+        const result = await db.collection("noticias").updateOne(
+            { _id: new ObjectId(id) }, 
+            { $set: datosActualizados }
+        );
+
+        if (result.matchedCount === 0) {
+            return res.status(404).json({ message: "Noticia no encontrada para actualizar." });
+        }
+
+        res.json({ message: "Noticia actualizada con éxito." });
+
+    } catch (error) {
+        console.error('Error al actualizar noticia:', error);
+        res.status(400).json({ message: "ID o datos inválidos para la actualización." });
     }
 };
